@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Brankas PDF</string>
+    <string name="firestore_only">Firestore-Only Mode - No Billing Needed</string>
+</resources>

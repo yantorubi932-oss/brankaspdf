@@ -1,0 +1,1 @@
+<data-extraction-rules><cloud-backup><include domain="sharedpref"/><exclude domain="sharedpref" path="device.xml"/></cloud-backup></data-extraction-rules>

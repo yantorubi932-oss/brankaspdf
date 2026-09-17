@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.BrankasPDF" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">#6750A4</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
