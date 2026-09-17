@@ -1,4 +1,4 @@
-name: Android APK
+﻿name: Android APK
 
 on:
   push:
@@ -25,11 +25,10 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Android SDK packages
-        run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
@@ -38,10 +37,10 @@ jobs:
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
-        run: >
-          ./gradlew --no-daemon --stacktrace assembleDebug
-          -PSUPABASE_URL="$SUPABASE_URL"
-          -PSUPABASE_PUBLISHABLE_KEY="$SUPABASE_PUBLISHABLE_KEY"
+        run: |
+          ./gradlew --no-daemon --stacktrace assembleDebug \
+            -PSUPABASE_URL="$SUPABASE_URL" \
+            -PSUPABASE_PUBLISHABLE_KEY="$SUPABASE_PUBLISHABLE_KEY"
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
