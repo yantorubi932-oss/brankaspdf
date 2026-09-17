@@ -9,18 +9,20 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId 'com.dc2cell.brankaspdf'
-        minSdk 26
-        targetSdk 34
-        versionCode 1
-        versionName '1.0'
+    applicationId 'com.dc2cell.brankaspdf'
+    minSdk 26
+    targetSdk 34
+    versionCode 1
+    versionName '1.0'
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-def supabaseUrl = project.findProperty('SUPABASE_URL') ?: ''
-def supabaseKey = project.findProperty('SUPABASE_PUBLISHABLE_KEY') ?: ''
+    testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
-buildConfigField 'String', 'SUPABASE_URL', '"' + supabaseUrl + '"'
-buildConfigField 'String', 'SUPABASE_PUBLISHABLE_KEY', '"' + supabaseKey + '"'    }
+    def supabaseUrl = project.findProperty('SUPABASE_URL') ?: ''
+    def supabaseKey = project.findProperty('SUPABASE_PUBLISHABLE_KEY') ?: ''
+
+    buildConfigField 'String', 'SUPABASE_URL', '"' + supabaseUrl + '"'
+    buildConfigField 'String', 'SUPABASE_PUBLISHABLE_KEY', '"' + supabaseKey + '"'
+}
 
     buildTypes {
         release {
